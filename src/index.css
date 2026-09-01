@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FAF7F2;
+    color: #221C18;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark body,
+  body.dark {
+    background-color: #0E0C0A;
+    color: #F5EFE6;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Luxury Dark Mode Comprehensive Overrides */
+html.dark,
+.dark {
+  color-scheme: dark;
+}
+
+html.dark body,
+.dark body {
+  background-color: #0E0C0A !important;
+  color: #F4EFE6 !important;
+}
+
+.dark #al-noureen-app-root {
+  background-color: #0E0C0A !important;
+  color: #F4EFE6 !important;
+}
+
+/* Light ivory backgrounds transition to deep obsidian luxury in dark mode */
+.dark .bg-\[\#FAF7F2\],
+.dark .bg-\[\#FAF8F5\],
+.dark .bg-\[\#FAF7F2\]\/95 {
+  background-color: #120F0D !important;
+}
+
+.dark .bg-\[\#F4EFE6\],
+.dark .bg-\[\#F2ECE1\],
+.dark .bg-\[\#F0EAE0\],
+.dark .bg-\[\#F7F2E8\],
+.dark .bg-\[\#EDE6D8\],
+.dark .bg-\[\#F5EFE6\] {
+  background-color: #1A1613 !important;
+}
+
+.dark .bg-white {
+  background-color: #1F1A16 !important;
+}
+
+/* Borders in dark mode */
+.dark .border-\[\#E8E2D5\],
+.dark .border-\[\#E0D5BE\],
+.dark .border-\[\#DDD3BC\],
+.dark .border-\[\#D4CBBF\],
+.dark .border-\[\#D8CEBC\],
+.dark .border-\[\#E8DFC8\],
+.dark .border-\[\#DED7CA\] {
+  border-color: #2E2620 !important;
+}
+
+/* Text adjustments in dark mode */
+.dark .text-\[\#1E1A17\],
+.dark .text-\[\#221C18\],
+.dark .text-\[\#181411\] {
+  color: #F5EFE6 !important;
+}
+
+.dark .text-\[\#3D332A\],
+.dark .text-\[\#4A3E34\],
+.dark .text-\[\#54463A\],
+.dark .text-\[\#5E5043\],
+.dark .text-\[\#594E43\],
+.dark .text-\[\#6B635B\],
+.dark .text-\[\#6E6053\],
+.dark .text-\[\#7A6B5D\] {
+  color: #C5BAAC !important;
+}
+
+.dark .text-\[\#8C7E72\],
+.dark .text-\[\#8C7A6B\],
+.dark .text-\[\#A69788\] {
+  color: #9E9081 !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #191512 !important;
+  color: #F5EFE6 !important;
+  border-color: #382F27 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #7D7063 !important;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #120F0D;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #332A22;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #C59B27;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CEBC;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B27;
+}
+
+/* Hide scrollbar for tabs / carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Luxury Gold Shimmer & Ambient Atmosphere */
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes goldFoilSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  50% { transform: translateX(150%) skewX(-20deg); }
+  100% { transform: translateX(150%) skewX(-20deg); }
+}
+
+@keyframes pulseGoldGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, rgba(197,155,39,0.02) 0%, rgba(245,215,127,0.45) 50%, rgba(197,155,39,0.02) 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 2.2s infinite ease-in-out;
+}
+
+.gold-sweep-beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  background: linear-gradient(90deg, transparent 0%, rgba(245,215,127,0.35) 50%, transparent 100%);
+  animation: goldFoilSweep 2.8s infinite ease-in-out;
+}
+
+.gold-ambient-glow {
+  animation: pulseGoldGlow 4s infinite ease-in-out;
+}
+
+.float-slow {
+  animation: floatSubtle 6s infinite ease-in-out;
+}
+
+/* Print Stylesheet for Official Invoice */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  header, footer, #bottom-nav, #floating-whatsapp-widget, .print\:hidden, .no-print {
+    display: none !important;
+  }
+
+  #order-success-luxury-view {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    min-height: auto !important;
+  }
+
+  #order-success-luxury-view > div {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: auto;
+  }
+}

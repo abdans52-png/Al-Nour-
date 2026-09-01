@@ -1,0 +1,6 @@
+{
+  "name": "AL Noureen by Nasreen | Modest Fashion & Luxury Ethnic Wear",
+  "description": "AL Noureen by Nasreen modest fashion brand offering Pakistani dresses, luxury abayas, hijabs, co-ord sets, accessories, and bags with 'Two Lights. One Beautiful Vision.' design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

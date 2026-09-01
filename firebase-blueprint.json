@@ -1,0 +1,161 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Luxury garment, abaya, couture dress or accessory",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "arabicName": { "type": "string", "maxLength": 200 },
+        "subtitle": { "type": "string", "maxLength": 300 },
+        "category": { "type": "string", "maxLength": 100 },
+        "fabric": { "type": "string", "maxLength": 200 },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "description": { "type": "string", "maxLength": 3000 },
+        "images": { "type": "array" },
+        "badge": { "type": "string", "maxLength": 100 },
+        "inStock": { "type": "boolean" },
+        "stockCount": { "type": "number" },
+        "colors": { "type": "array" },
+        "sizes": { "type": "array" },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "isNewArrival": { "type": "boolean" },
+        "isBestSeller": { "type": "boolean" },
+        "isExclusive": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "category", "price", "inStock"]
+    },
+    "PromoOffer": {
+      "title": "PromoOffer",
+      "description": "Promotional coupon code and discount rule",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "code": { "type": "string", "maxLength": 50 },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 500 },
+        "discountType": { "type": "string", "enum": ["percentage", "flat"] },
+        "discountValue": { "type": "number" },
+        "minOrderAmount": { "type": "number" },
+        "expiryDate": { "type": "string", "maxLength": 50 },
+        "isActive": { "type": "boolean" },
+        "highlightBadge": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "code", "discountType", "discountValue", "isActive"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "orderNumber": { "type": "string", "maxLength": 100 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 200 },
+        "email": { "type": "string", "format": "email", "maxLength": 254 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "shippingAddress": { "type": "string", "maxLength": 500 },
+        "city": { "type": "string", "maxLength": 100 },
+        "country": { "type": "string", "maxLength": 100 },
+        "postalCode": { "type": "string", "maxLength": 50 },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "shipping": { "type": "number" },
+        "total": { "type": "number" },
+        "currency": { "type": "string", "maxLength": 10 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "paymentStatus": { "type": "string", "maxLength": 50 },
+        "orderStatus": { "type": "string", "maxLength": 50 },
+        "trackingNumber": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "orderNumber", "customerName", "email", "items", "total", "orderStatus"]
+    },
+    "SiteBanners": {
+      "title": "SiteBanners",
+      "description": "Global announcement bar and header banner configuration",
+      "type": "object",
+      "properties": {
+        "announcementText": { "type": "string", "maxLength": 500 },
+        "announcementCode": { "type": "string", "maxLength": 50 },
+        "announcementLink": { "type": "string", "maxLength": 100 },
+        "isEnabled": { "type": "boolean" },
+        "heroHeadline": { "type": "string", "maxLength": 300 },
+        "heroSubtitle": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["announcementText", "isEnabled"]
+    },
+    "SiteMedia": {
+      "title": "SiteMedia",
+      "description": "Dynamic visual media assets across storefront",
+      "type": "object",
+      "properties": {
+        "heroSlides": { "type": "array" },
+        "categoryImages": { "type": "object" },
+        "lookbookImages": { "type": "object" },
+        "aboutImages": { "type": "object" }
+      }
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User customer account profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "format": "email", "maxLength": 254 },
+        "displayName": { "type": "string", "maxLength": 200 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "photoURL": { "type": "string", "maxLength": 1000 },
+        "role": { "type": "string", "enum": ["customer", "admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "email"]
+    },
+    "AdminDoc": {
+      "title": "AdminDoc",
+      "description": "Admin authorization entry",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string" },
+        "grantedAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": { "$ref": "Product" },
+      "description": "Garments, couture pieces, and accessories catalog"
+    },
+    "/offers/{offerId}": {
+      "schema": { "$ref": "PromoOffer" },
+      "description": "Active promotional discount vouchers"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "Order" },
+      "description": "Customer purchase transaction orders"
+    },
+    "/settings/banners": {
+      "schema": { "$ref": "SiteBanners" },
+      "description": "Storefront announcement ticker configuration"
+    },
+    "/settings/media": {
+      "schema": { "$ref": "SiteMedia" },
+      "description": "Configured dynamic image URLs and hero slides"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "UserProfile" },
+      "description": "Registered customer profiles"
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "AdminDoc" },
+      "description": "Whitelisted administrator credentials"
+    }
+  }
+}
